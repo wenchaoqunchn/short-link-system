@@ -7,8 +7,15 @@
     <groupId>com.wenchaoqun.shortlink</groupId>
     <artifactId>shortlink-all</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>admin</module>
+        <module>project</module>
+        <module>gateway</module>
+    </modules>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
         <spring-boot.version>3.0.7</spring-boot.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
