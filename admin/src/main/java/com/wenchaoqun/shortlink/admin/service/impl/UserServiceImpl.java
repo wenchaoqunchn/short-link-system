@@ -28,8 +28,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         if (userDO == null) {
             return null;
         }
-        UserRespDTO userRespDTO = new UserRespDTO();
-        BeanUtils.copyProperties(userDO, userRespDTO);
-        return userRespDTO;
+        UserRespDTO result = new UserRespDTO();
+        BeanUtils.copyProperties(userDO, result);
+        return result;
     }
 }
