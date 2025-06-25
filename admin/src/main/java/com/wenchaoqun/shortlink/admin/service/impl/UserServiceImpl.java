@@ -104,7 +104,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     public UserLoginRespDTO login(UserLoginReqDTO requestParam) {
         String loginKey = "login_" + requestParam.getUsername();
         if (stringRedisTemplate.hasKey(loginKey)) {
-            throw new ClientException(USER_LOGIN_ERROR);
+            throw new ClientException(USER_ALREADY_LOGIN);
         }
         LambdaQueryWrapper<UserDO> loginWrapper = Wrappers.lambdaQuery(UserDO.class)
                 .eq(UserDO::getUsername, requestParam.getUsername())
@@ -123,5 +123,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     @Override
     public Boolean checkLogin(String username, String token) {
         return stringRedisTemplate.opsForHash().hasKey("login_" + username, token);
+    }
+
+    @Override
+    public void logout(String username, String token) {
+        String loginKey = "login_" + username;
+        if (!checkLogin(username, token)) {
+            throw new ClientException(USER_NOT_LOGIN);
+        }
+        stringRedisTemplate.delete(loginKey);
     }
 }

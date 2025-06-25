@@ -9,7 +9,9 @@ public enum UserErrorCodeEnum implements IErrorCode {
     USER_EXIST("B000202", "用户记录存在"),
     USER_SAVE_ERROR("B000203", "用户记录新增失败"),
     USER_UPDATE_ERROR("B000204", "用户记录更新失败"),
-    USER_LOGIN_ERROR("B000205","用户登录失败");
+    USER_LOGIN_ERROR("B000205","用户登录失败"),
+    USER_ALREADY_LOGIN("B000206","用户已登录"),
+    USER_NOT_LOGIN("B000207", "用户尚未登录");
 
 
     private final String code;
