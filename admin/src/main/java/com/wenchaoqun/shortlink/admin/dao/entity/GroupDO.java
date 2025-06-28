@@ -4,11 +4,19 @@ package com.wenchaoqun.shortlink.admin.dao.entity;
  * 短链接分组实体
  */
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.wenchaoqun.shortlink.admin.common.database.BaseDO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 
 @Data
-public class GroupDO {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@TableName("t_group")
+public class GroupDO extends BaseDO {
 
     /**
      * ID
@@ -23,26 +31,12 @@ public class GroupDO {
     /**
      * 分组名称
      */
-    private String name;
+    private String groupName;
 
     /**
      * 创建分组用户
      */
     private String username;
 
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-
-    /**
-     * 修改时间
-     */
-    private LocalDateTime updateTime;
-
-    /**
-     * 删除标识
-     */
-    private Boolean delFlag;
 
 }
